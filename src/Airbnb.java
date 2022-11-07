@@ -22,6 +22,7 @@ public class Airbnb {
     }
 
     public void read (){
+        shukriAirbnb.propertyPrint();
 
     }
     public void propertyPrint(){
