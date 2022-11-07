@@ -1,4 +1,4 @@
-
+import java.io.*;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -60,6 +60,55 @@ HashMap<Integer, Property> properties;
             int iDNumber=Integer.parseInt(scan.nextLine());
             properties.remove(iDNumber); // access hashmap to delete, no loop needed like arrayList
             System.out.println(properties);
+        }
+
+        public void saveData(){
+            try{
+                FileOutputStream fileOut = new FileOutputStream("employees.ser");
+                // ^ opening a connect to a new file and allowing to connect
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                // ^ streaming data from an object into a file
+                out.writeObject(properties);
+                // take this object and i'm lobbing it
+                out.close();
+                // close it once we are done with the file
+                fileOut.close();
+                // close it once we are done with the file
+                System.out.println("Serialized data is saved!");
+
+
+            }catch (IOException i) {
+                i.printStackTrace();
+                // history of all the methods that were called - allows us to see where the code went wrong.
+                //principle of a stack is similar to pringles - last in, first out
+            }
+
+        }
+
+        public void loadData(){
+            try {
+                // read object from a file
+                FileInputStream file = new FileInputStream("employees.ser");
+                // create a connect to a file
+                ObjectInputStream in = new ObjectInputStream(file);
+
+                // method for deserialization for an object
+                properties = (HashMap<Integer, Property>) in.readObject();
+                // ^ read object and convert data to type Employee
+
+                in.close();
+                file.close();
+
+                System.out.println("Object has been deserialized");
+                System.out.println(properties.size());
+
+            } catch (IOException i){
+                i.printStackTrace();
+
+            }catch (ClassNotFoundException c){
+                c.printStackTrace();
+            }
+
         }
 
 
