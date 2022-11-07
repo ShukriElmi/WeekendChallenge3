@@ -2,6 +2,7 @@ public class Property {
     String name;
     String location;
     double price;
+    int idNumber;
 
     public Property (String name, String location, double price) {
         this.name = name;
