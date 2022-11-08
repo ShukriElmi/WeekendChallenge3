@@ -11,7 +11,10 @@ HashMap<Integer, Property> properties;
        this.properties = new HashMap<Integer, Property>();
 
     }
-
+    public void greeting(){
+        String optionsMessage = "Welcome to Shukri's Airbnb! \n" + "Type C to create a new airbnb \n" + "Type R to read all airbnb options \n" + "Type U to update an airbnb \n" + "Type D to delete an airbnb \n" + "Type Q to quit \n";
+        System.out.println(optionsMessage);
+    }
     public void createProperty(){
         System.out.println("You typed (C)");
         System.out.println("Input an iD number");
